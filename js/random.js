@@ -50,7 +50,6 @@ Circle.prototype.init = function(){
     this.backType = "back"; // 归位
     this.backDynamics = "spring"; // 动画效果
     this.isPlay = false; // 标识（在生成文字过程中，不能再生成）
-    this.flag = false;
 }
 // 渲染出所有圆
 Circle.prototype.drawCircles = function () {
@@ -64,30 +63,35 @@ Circle.prototype.getUserText = function(){
     ipu = document.getElementById("input-text");
     ipu.addEventListener("keydown",function(event){
         if(event.which === 13){ // 如果是回车键
+            event.which = 14;
+            console.log(event.which);
             ipu.value = ipu.value.trim(); // 去头尾空格
-            var pat = /^[0-9]*$/; // 中文判断
+            var pat = /[\u4e00-\u9fa5]/; // 中文判断
             var isChinese = pat.test(ipu.value);
             if(ipu.value.length !=0 && isChinese){
                 This.inputText = ipu.value;
             }else{
-                alert("请输入汉字");
+                alert("请输入开始");
                 return;
             }
             if(This.isPlay){
                 return
             }
+            This.inputText = Math.floor(Math.random() * 1000 );
             This.getAnimateType();
             This.getTextPixel();
             This.isPlay = true;
+
         }
     });
 }
 // 计算文字的宽
 Circle.prototype.calculateTextWidth = function () {
-    this.textWidth = this.mCtx.measureText(this.inputText).width;
+    this.textWidth = 280;
 }
 // 获取文字像素点
 Circle.prototype.getTextPixel = function () {
+    console.log(This.textHeight+'*3');
     if(this.pCtx){
         this.pCtx.clearRect(0,0,this.textWidth,this.textHeight);
     }
@@ -95,7 +99,7 @@ Circle.prototype.getTextPixel = function () {
     this.iCanvasPixel.width = this.textWidth;
     this.iCanvasPixel.height = this.textHeight;
     this.pCtx =  this.iCanvasPixel.getContext("2d");
-    this.pCtx.font = "128px 微软雅黑";
+    this.pCtx.font = "150px 微软雅黑";
     this.pCtx.fillStyle = "#FF0000";
     this.pCtx.textBaseline = "botom";
     this.pCtx.fillText(this.inputText,0,110);
@@ -140,7 +144,7 @@ Circle.prototype.animateToText = function(){
     }
     setTimeout(function(){
         This.ballbackType();
-    },3000);
+    },3500);
 }
 // 粒子原路返回
 Circle.prototype.ballBackPosition = function(){
@@ -243,9 +247,8 @@ Circle.prototype.ballAnimate = function(){
         }
     })();
 }
-function ramdomlottery(min, max) {
-    this.inputText= Math.random() * (max - min) + min;
-    number=Math.floor(this.inputText);
+function changeFlag() {
+
 }
 // 生成一个随机数
 function ramdomNumber(min, max) {
