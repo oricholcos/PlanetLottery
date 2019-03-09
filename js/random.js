@@ -35,7 +35,7 @@ Circle.prototype.init = function(){
     this.iCanvasPixel.setAttribute("style","position:absolute;top:0;left:0;");
     this.pCtx = null; // 用于绘画文字的画布
     // 随机生成圆的数量
-    this.ballNumber = ramdomNumber(1000, 2000);
+    this.ballNumber = ramdomNumber(800, 1000);
     // 保存所有小球的数组
     this.balls = [];
     // 保存动画中最后一个停止运动的小球
@@ -81,7 +81,7 @@ Circle.prototype.getUserText = function(){
             This.getAnimateType();
             This.getTextPixel();
             This.isPlay = true;
-
+            Materialize.toast('结果为'+This.inputText, 100000);
         }
     });
 }
