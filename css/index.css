@@ -150,7 +150,7 @@ body
     left: 15px;
     top: 15px;
 }
-.orbit.mercury:hover
+.mercury:hover
 {
     animation-play-state: paused;
 }
@@ -174,7 +174,7 @@ body
     animation-duration: 24s;
     z-index: 11;
 }
-.orbit.venus:hover
+.venus:hover
 {
     animation-play-state: paused;
 }
@@ -208,7 +208,7 @@ body
     z-index: 12;
 }
 
-.orbit.earth:hover
+.earth:hover
 {
     animation-play-state: paused;
 }
@@ -240,7 +240,7 @@ body
     z-index: 13;
 }
 
-.orbit.mars:hover
+.mars:hover
 {
     animation-play-state: paused;
 }
@@ -269,7 +269,7 @@ body
     margin-left: -270px;
     animation-duration: 150s;
 }
-.orbit.jupiter:hover
+.jupiter:hover
 {
     animation-play-state: paused;
 }
@@ -298,7 +298,7 @@ body
     margin-left: -330px;
     animation-duration: 180s;
 }
-.orbit.saturn:hover
+.saturn:hover
 {
     animation-play-state: paused;
 }
@@ -327,7 +327,7 @@ body
     margin-left: -390px;
     animation-duration: 240s;
 }
-.orbit.uranus:hover
+.uranus:hover
 {
     animation-play-state: paused;
 }
@@ -356,7 +356,7 @@ body
     margin-left: -450px;
     animation-duration: 270s;
 }
-.orbit.neptune:hover
+.neptune:hover
 {
     animation-play-state: paused;
 }
@@ -375,47 +375,3 @@ body
 }
 /*#endregion */
 
-/*#region */
-.orbit.pluto
-{
-    height: 1000px;
-    width: 1000px;
-    left: 50%;
-    top: -325px;
-    margin-left: -430px;
-    animation-duration: 300s;
-    transform: rotateX(75deg) rotateY(-25deg) rotateZ(90deg);
-    animation-name: plutorotate;
-}
-.orbit.pluto:hover
-{
-    animation-play-state: paused;
-}
-.orbit.pluto > .planet
-{
-    height: 20px;
-    width: 20px;
-    left: 138px;
-    bottom: 138px;
-}
-
-.orbit.pluto > .planet > .ball
-{
-    background-image: url("../images/pluto.png");
-    animation-duration: 300s;
-}
-
-@keyframes plutorotate
-{
-    0%
-    {
-        transform: rotateX(75deg) rotateY(-25deg) rotateZ(0deg);
-    }
-
-    100%
-    {
-        transform: rotateX(75deg) rotateY(-25deg) rotateZ(-360deg);
-    }
-}
-
-/*#endregion */
