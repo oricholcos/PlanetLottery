@@ -35,20 +35,20 @@ Circle.prototype.init = function(){
     this.iCanvasPixel.setAttribute("style","position:absolute;top:0;left:0;");
     this.pCtx = null; // 用于绘画文字的画布
     // 随机生成圆的数量
-    this.ballNumber = ramdomNumber(800, 1000);
+    this.ballNumber = ramdomNumber(1000, 2000);
     // 保存所有小球的数组
     this.balls = [];
     // 保存动画中最后一个停止运动的小球
     this.animte = null;
     this.imageData = null;
-    this.textWidth = 0; // 保存生成的宽度
-    this.textHeight = 150; // 保存生成的高度
+    this.textWidth = 0; // 保存生成文字的宽度
+    this.textHeight = 150; // 保存生成文字的高度
     this.inputText = ""; // 保存用户输入的内容
     this.actionCount = 0;
-    this.ballActor = []; // 保存生成的粒子
-    this.actorNumber = 0; // 保存生成的粒子数量
+    this.ballActor = []; // 保存生成文字的粒子
+    this.actorNumber = 0; // 保存生成文字的粒子数量
     this.backType = "back"; // 归位
-    this.backDynamics = "spring"; // 动画效果
+    this.backDynamics = ""; // 动画效果
     this.isPlay = false; // 标识（在生成文字过程中，不能再生成）
 }
 // 渲染出所有圆
@@ -71,27 +71,31 @@ Circle.prototype.getUserText = function(){
             if(ipu.value.length !=0 && isChinese){
                 This.inputText = ipu.value;
             }else{
-                alert("请输入开始");
+                alert("请输入正确字符");
                 return;
             }
             if(This.isPlay){
                 return
             }
-            This.inputText = Math.floor(Math.random() * 1000 );
+            if(This.inputText == '开始'){
+                This.inputText = Math.floor(Math.random() * 1000 );
+            }
             This.getAnimateType();
             This.getTextPixel();
             This.isPlay = true;
-            Materialize.toast('结果为'+This.inputText, 100000);
+            Materialize.toast(This.inputText, 100000);
         }
     });
 }
 // 计算文字的宽
 Circle.prototype.calculateTextWidth = function () {
-    this.textWidth = 280;
+        if(this.textWidth == '开始')
+            this.textWidth = this.mCtx.measureText(this.inputText).width;
+        else this.textWidth = 280;
+    
 }
 // 获取文字像素点
 Circle.prototype.getTextPixel = function () {
-    console.log(This.textHeight+'*3');
     if(this.pCtx){
         this.pCtx.clearRect(0,0,this.textWidth,this.textHeight);
     }
@@ -99,7 +103,7 @@ Circle.prototype.getTextPixel = function () {
     this.iCanvasPixel.width = this.textWidth;
     this.iCanvasPixel.height = this.textHeight;
     this.pCtx =  this.iCanvasPixel.getContext("2d");
-    this.pCtx.font = "150px 微软雅黑";
+    this.pCtx.font = "128px 微软雅黑";
     this.pCtx.fillStyle = "#FF0000";
     this.pCtx.textBaseline = "botom";
     this.pCtx.fillText(this.inputText,0,110);
@@ -144,7 +148,7 @@ Circle.prototype.animateToText = function(){
     }
     setTimeout(function(){
         This.ballbackType();
-    },3500);
+    },3000);
 }
 // 粒子原路返回
 Circle.prototype.ballBackPosition = function(){
@@ -246,9 +250,6 @@ Circle.prototype.ballAnimate = function(){
             This.renderBall(This.balls[i]);
         }
     })();
-}
-function changeFlag() {
-
 }
 // 生成一个随机数
 function ramdomNumber(min, max) {
