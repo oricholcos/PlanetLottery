@@ -1,3 +1,4 @@
+
 function Circle() {
     var This = this;
     this.init();
@@ -255,3 +256,4 @@ Circle.prototype.ballAnimate = function(){
 function ramdomNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
+
