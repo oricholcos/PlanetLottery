@@ -12,15 +12,20 @@
 <title>随机数抽奖</title>
 </head>
 <div class="fixed-action-btn horizontal">
-    <a href="../index.html" class="btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="回到上一级">
+    <a href="randomChoose.html" class="btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="回到上一级">
         <i class="large material-icons" >replay</i>
     </a>
 </div>
 <body>
 <div class="operator-box">
 <div class="flex-box">
-    <div class="input-box"><input type="text" placeholder="输入开始后回车！" id="input-text">
+	<div class="input-box" id="start">
+			<input type="text" placeholder="输入“开始”后回车！" id="input-text">
+			<p>（滑动右方已出现的数字可以删除）</p>
+	 </div>    
 </div>
+
+
 </div>
 <script src="../js/random.min.js"></script>
 <script src="../js/random.js"></script>
