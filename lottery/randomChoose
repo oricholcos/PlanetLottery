@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <!--  CSS -->
+    <link rel="stylesheet" href="../css/random.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <!--  JavaScript -->
+    <script src="http://www.materializecss.cn/js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js"></script>
+<title>随机数抽奖</title>
+
+</head>
+<div class="fixed-action-btn horizontal">
+    <a href="../index.html" class="btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="回到上一级">
+        <i class="large material-icons" >replay</i>
+    </a>
+</div>
+<body>
+<div class="operator-box">
+<div class="flex-box">
+	<div id="xuanze">
+		<p>请选择随机数抽奖的方式</p><br>
+		&nbsp <button type="button" class="button" id="gongsi" onclick="location.href='random.html'">公司</button>
+
+		&nbsp &nbsp &nbsp <button type="button" class="button" onclick="location.href='random.html'">积分</button>
+	</div> 
+   
+</div>
+
+
+</div>
+<script src="../js/random.min.js"></script>
+<script src="../js/random.js"></script>
+<script>
+var iCircle = new Circle();
+</script>
+
+
+</body>
+</html>
