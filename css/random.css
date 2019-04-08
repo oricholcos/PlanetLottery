@@ -41,7 +41,7 @@ body {
 }
 canvas {
     display: block;
-    background: url("../images/universe.png") no-repeat center center;
+    background: url("../images/3.png") no-repeat center center;
 }
 body::-webkit-scrollbar{
     display: none;
