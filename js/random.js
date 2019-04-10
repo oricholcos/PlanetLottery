@@ -1,3 +1,4 @@
+
 function Circle() {
     var This = this;
     this.init();
@@ -185,7 +186,7 @@ Circle.prototype.changeStatus = function(ball){
 Circle.prototype.generalRandomParam = function(){
     for(var i=0;i<this.ballNumber;i++){
         var ball = {};
-        ball.size = 1; // 随机生成圆半径
+        ball.size = 1.3; // 随机生成圆半径
         // 随机生成圆心 x 坐标
         ball.x = ramdomNumber(0+ball.size, this.iCanvasW-ball.size);
         ball.y = ramdomNumber(0+ball.size, this.iCanvasH-ball.size);
@@ -255,3 +256,4 @@ Circle.prototype.ballAnimate = function(){
 function ramdomNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
+
