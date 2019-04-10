@@ -58,7 +58,7 @@
         {name: '50', color: colors[4],weight:5},
         {name: '100', color: colors[5],weight:3}
     ];
-
+    var repsData=[];
     var texture_list=new Array();
     var tex_num=5; //定义纹理数量
     for(var i=0;i<tex_num;i++){
@@ -67,28 +67,41 @@
         var pattern = sector.createPattern(tex_img,"repeat");
         texture_list.push(tex_img);
     }
-
+    $.get("test.jsp", { dataType: 'json'},
+  		function(response,status,xhr){
+  			if(response!=null){
+    			response=response.replace(/[\r\n]/g,"")
+    			var json=$.parseJSON(response);
+    			for (var i = 0; i < json.length; i++) {
+    				repsData.push({name: json[i].name, color: colors[i],weight:json[i].weight})
+    			}
+    			if(json.length!=0){
+    				data=repsData;
+    			}
+  			}
+  			paintName(data);
+  	});
     var w = canvas.width;
     var h = canvas.height;
     const ang=Math.PI/180;
     var lastArc=0; //记录转盘上一次的指针角度
     window.onload = function() {
-        paintName(data);
+        //paintName(data);
     };
     function roulette_reload(){
         lastArc=0;
         canvas.height=canvas.height;
         paintName(data);
     }
-    function paintName(data) {
-        var len = data.length;
+    function paintName(adata) {
+        var len = adata.length;
         var totalWeit=0;
         for(var i=0;i<len;i++){
-            totalWeit+=data[i].weight;
+            totalWeit+=adata[i].weight;
         }
         var angle = Math.PI * 2 / totalWeit;
         for (var i = 0; i < len; i++) {
-            var item = data[i];
+            var item = adata[i];
             sector.beginPath();
             sector.moveTo(w / 2, h / 2);
             sector.lineTo(w - 3, h / 2);
@@ -99,7 +112,7 @@
                     var pattern = sector.createPattern(texture_list[i%tex_num],"repeat");
                 }
                 else{
-                    var pattern = sector.createPattern(texture_list[1],"repeat");
+                    var pattern = sector.createPattern(texture_list[(i+1)%tex_num],"repeat");
                 }
                 sector.fillStyle = pattern;
             }
