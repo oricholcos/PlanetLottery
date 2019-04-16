@@ -21,10 +21,13 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: rgb(253, 249, 249);
+      background: url("../images/demo-1-bg.jpg") no-repeat;
     }
 
-
+	.wrapper {
+            opacity:0.81;
+        }
+	  
     .main {
       height: calc(100vh - 85px);
       flex: 1 0 auto;
@@ -81,7 +84,7 @@
         </div>
 		 </div>
 	  
-	  <ul class="collection" style="margin:auto 10% 0 10%">
+	  <ul class="collection wrapper" style="margin:auto 10% 0 10%">
     <li class="collection-item avatar">
       <img src="../images/goldenegg.jpg" alt="" class="circle">
 		<span class="title"><b>砸金蛋</b></span>
@@ -129,7 +132,7 @@
             <input class="file-path validate" type="text" placeholder="抽奖的excel文件上传">
           </div>
         </div>
-        <p>随机数最大最小值控制</p>
+        <p style="color:silver">随机数最大最小值控制</p>
         <p class="range-field">
           <input type="range" id="test5" min="0" max="99" />
           </p>
@@ -138,7 +141,7 @@
         </p>
       </form>
       <label>转盘</label>
-        <select class="browser-default">
+        <select class="browser-default wrapper">
           <option value="" disabled selected>Choose your option</option>
           <option value="1">选项一   4个</option>
           <option value="2">选项二   8个</option>
@@ -148,9 +151,7 @@
 <br/>
 <br/>
 <br/>
-<br/>
-<br/>
-<br/>
+
   </main>
   
   <!--  Footer -->
